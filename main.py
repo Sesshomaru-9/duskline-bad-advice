@@ -31,6 +31,8 @@ def _validate_entry(text: str) -> None:
         f"entry is {len(text)} chars, must be 1-{MAX_CHARS}"
     )
     assert "\n" not in text, "entry must be a single line"
+    assert "\r" not in text, "entry must not contain carriage returns"
+    assert text == text.strip(), "entry must not have leading/trailing whitespace"
     text.encode("utf-8")  # raises if not valid UTF-8
 
 
